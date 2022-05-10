@@ -1,16 +1,16 @@
 
 var data;
 var graph;
-var dropDown;
+var dropdown;
 
 function preload() {
-  data = loadJSON('kevinbacon.json');
+  data = loadJSON('data.json');
 }
 
 function setup() {
   graph = new Graph();
-  dropDown = createSelect();
-  dropDown.changed(bfs);
+  dropdown = createSelect();
+  dropdown.changed(bfs);
   noCanvas();
   //console.log(data);
 
@@ -27,7 +27,7 @@ function setup() {
       var actorNode = graph.getNode(actor);
       if (actorNode == undefined) {
         actorNode = new Node(actor);
-        dropDown.option(actor);
+        dropdown.option(actor);
       }
       graph.addNode(actorNode);
       movieNode.addEdge(actorNode);
@@ -37,7 +37,7 @@ function setup() {
 
 function bfs() {
   graph.reset();
-  var start = graph.setStart(dropDown.value());
+  var start = graph.setStart(dropdown.value());
   // var start = graph.setStart("Kevin Bacon");
   var end = graph.setEnd('Kevin Bacon');
 
